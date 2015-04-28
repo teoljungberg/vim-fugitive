@@ -1102,6 +1102,10 @@ function! s:FinishCommit() abort
   return ''
 endfunction
 
+augroup fugitive_commit
+  autocmd BufReadPost PULLREQ_EDITMSG setfiletype gitcommit
+augroup END
+
 " Section: Gmerge, Gpull
 
 call s:command("-nargs=? -bang -complete=custom,s:RevisionComplete Gmerge " .
